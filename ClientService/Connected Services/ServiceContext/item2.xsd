@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8701/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Service.Entites" />
+  <xs:import schemaLocation="http://localhost:8701/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/Microsoft.EntityFrameworkCore" />
+  <xs:complexType name="Context">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Microsoft.EntityFrameworkCore" base="q1:DbContext">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Service.Entites" minOccurs="0" name="masters" nillable="true" type="q2:ArrayOfMaster" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Service.Entites" minOccurs="0" name="records" nillable="true" type="q3:ArrayOfRecord" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Service.Entites" minOccurs="0" name="users" nillable="true" type="q4:ArrayOfUser" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Context" nillable="true" type="tns:Context" />
+</xs:schema>

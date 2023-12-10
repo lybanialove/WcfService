@@ -18,17 +18,24 @@ namespace View
         private void button1_Click(object sender, EventArgs e)
         {
             DateTime datetime = dateTimePicker1.Value.Date + ts;
-            RecordingRequest request = new RecordingRequest {master = comboBox1.SelectedItem.ToString(),dateTime = datetime };
-            try
+            if(comboBox1.SelectedItem == null)
             {
-                client.Recording(request);
-                MessageBox.Show("Вы записались");
-                
+                MessageBox.Show("Вы не выбрали мастера!");
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message,"Ошибка");
+                RecordingRequest request = new RecordingRequest { master = comboBox1.SelectedItem.ToString(), dateTime = datetime };
+                try
+                {
+                    client.Recording(request);
+                    MessageBox.Show("Вы записались");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка");
+                }
             }
+            
             
         }
 
